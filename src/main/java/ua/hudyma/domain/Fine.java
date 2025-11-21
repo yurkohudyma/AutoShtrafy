@@ -3,6 +3,7 @@ package ua.hudyma.domain;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.NaturalId;
+import ua.hudyma.enums.ChannelType;
 import ua.hudyma.util.IdGenerator;
 
 import java.util.ArrayList;
@@ -26,7 +27,8 @@ public class Fine {
     @ManyToOne
     @JoinColumn(name = "camera_id")
     private Camera camera;
-    @OneToMany(mappedBy = "fine")
-    private List<Channel> channelList = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    private ChannelType channelType;
+    private String postanovaNumber;
 
 }

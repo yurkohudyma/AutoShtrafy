@@ -22,8 +22,8 @@ public class Car {
     @ManyToMany
     @ToString.Exclude
     @JoinTable(name = "drivers_using_cars",
-            joinColumns = @JoinColumn(name = "driver_id"),
-            inverseJoinColumns = @JoinColumn(name = "car_id"))
+            joinColumns = @JoinColumn(name = "car_id"),
+            inverseJoinColumns = @JoinColumn(name = "driver_id"))
     private List<Driver> driverList = new ArrayList<>();
 
     @OneToMany(mappedBy = "car")

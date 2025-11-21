@@ -4,7 +4,7 @@ import java.util.List;
 
 public record CarRespDto(
         String licensePlate,
-        List<DriverRespDto> driverList,
-        List<FineRespDto> fineList
+        List<String> driverNamesList,
+        List<String> finePostanovaList
 ) {
 }
