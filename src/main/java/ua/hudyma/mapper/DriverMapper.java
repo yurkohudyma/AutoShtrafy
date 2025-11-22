@@ -13,7 +13,8 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class DriverMapper extends BaseMapper<DriverRespDto, Driver, DriverReqDto> {
+public class DriverMapper extends
+        BaseMapper<DriverRespDto, Driver, DriverReqDto> {
     private final EntityUtilMapper utilMapper;
     @Override
     public DriverRespDto toDto(Driver driver) {

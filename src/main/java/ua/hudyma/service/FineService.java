@@ -13,6 +13,8 @@ import ua.hudyma.dto.FineRespDto;
 import ua.hudyma.mapper.FineMapper;
 import ua.hudyma.repository.FineRepository;
 
+import java.util.List;
+
 import static ua.hudyma.util.MessageProcessor.getReturnMessage;
 
 @Service
@@ -34,6 +36,11 @@ public class FineService {
     @Transactional
     public FineRespDto fetchFine(String fineCode) {
         return fineMapper.toDto(getFine(fineCode));
+    }
+
+    @Transactional
+    public List<FineRespDto> getAll() {
+        return fineMapper.toDtoList(fineRepository.findAll());
     }
 
     public Fine getFine(String fineCode) {

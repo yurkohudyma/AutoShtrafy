@@ -18,7 +18,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "cameras")
-public class Camera {
+public class Camera implements BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

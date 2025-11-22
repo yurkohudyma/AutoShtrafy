@@ -7,6 +7,8 @@ import ua.hudyma.dto.CarReqDto;
 import ua.hudyma.dto.CarRespDto;
 import ua.hudyma.service.CarService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/cars")
 @RequiredArgsConstructor
@@ -26,5 +28,9 @@ public class CarController {
                                               @RequestParam String driverCode){
         return ResponseEntity.ok(carService
                 .bindDriver (licensePlate, driverCode));
+    }
+    @GetMapping("/all")
+    public ResponseEntity<List<CarRespDto>> getAll (){
+        return ResponseEntity.ok(carService.getAll());
     }
 }

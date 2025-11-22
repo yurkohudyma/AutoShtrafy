@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "drivers")
-public class Driver {
+public class Driver implements BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

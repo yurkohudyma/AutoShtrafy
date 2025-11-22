@@ -1,7 +1,5 @@
 package ua.hudyma.dto;
 
-import ua.hudyma.enums.ChannelType;
-
 import java.util.List;
 
 public record FineRespDto(

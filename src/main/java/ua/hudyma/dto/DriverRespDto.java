@@ -7,6 +7,6 @@ public record DriverRespDto(
         String phoneNumber,
         String driverCode,
         List<String> carLicensePlatesList,
-        List<String> finePostanoveList
+        List<String> finePostanovaList
 ) {
 }

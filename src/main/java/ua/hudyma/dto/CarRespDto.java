@@ -6,6 +6,7 @@ public record CarRespDto(
         String licensePlate,
         List<String> driverNamesList,
         String ownerName,
-        List<String> finePostanovaList
+        List<String> finePostanovaList,
+        String region
 ) {
 }

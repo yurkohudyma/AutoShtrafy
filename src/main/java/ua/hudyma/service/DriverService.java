@@ -13,6 +13,9 @@ import ua.hudyma.exception.DtoObligatoryFieldsAreMissingException;
 import ua.hudyma.mapper.DriverMapper;
 import ua.hudyma.repository.DriverRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static ua.hudyma.util.MessageProcessor.getReturnMessage;
 
 @Service
@@ -23,10 +26,13 @@ public class DriverService {
     private final DriverRepository driverRepository;
     private final DriverMapper driverMapper;
 
-    public String createDriver(DriverReqDto dto) throws Exception {
-        var driver = driverMapper.toEntity(dto);
-        driverRepository.save(driver);
-        return getReturnMessage(driver, "fullName");
+    public String createDriver(DriverReqDto[] dto) throws Exception {
+        var list = new ArrayList<Driver>();
+        for (DriverReqDto req: dto) {
+            list.add(driverMapper.toEntity(req));
+        }
+        driverRepository.saveAll(list);
+        return getReturnMessage(list, "fullName");
     }
 
     @SneakyThrows
@@ -39,6 +45,11 @@ public class DriverService {
         var msg = getReturnMessage(driver, "fullName");
         log.info(msg);
         return driverMapper.toDto(driver);
+    }
+
+    @Transactional
+    public List<DriverRespDto> getAll() {
+        return driverMapper.toDtoList(driverRepository.findAll());
     }
 
     public Driver getDriver(String driverCode) {

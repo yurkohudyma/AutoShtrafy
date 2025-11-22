@@ -14,6 +14,7 @@ import ua.hudyma.mapper.CarMapper;
 import ua.hudyma.repository.CarRepository;
 import ua.hudyma.repository.DriverRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 import static ua.hudyma.util.MessageProcessor.getReturnMessage;
@@ -42,6 +43,11 @@ public class CarService {
                 car.getLicensePlate());
         log.info(msg);
         return msg;
+    }
+
+    @Transactional
+    public List<CarRespDto> getAll() {
+        return carMapper.toDtoList(carRepository.findAll());
     }
 
     private Driver getDriver(String driverCode) {

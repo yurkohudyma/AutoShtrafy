@@ -12,6 +12,8 @@ import ua.hudyma.dto.CameraRespDto;
 import ua.hudyma.mapper.CameraMapper;
 import ua.hudyma.repository.CameraRepository;
 
+import java.util.List;
+
 import static ua.hudyma.util.MessageProcessor.getReturnMessage;
 
 @Service
@@ -31,6 +33,11 @@ public class CameraService {
     @Transactional
     public CameraRespDto fetchCamera(String cameraCode) {
         return cameraMapper.toDto(getCamera(cameraCode));
+    }
+
+    @Transactional
+    public List<CameraRespDto> getAll() {
+        return cameraMapper.toDtoList(cameraRepository.findAll());
     }
 
     public Camera getCamera(String cameraCode) {
