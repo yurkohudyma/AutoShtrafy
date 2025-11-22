@@ -1,4 +1,4 @@
 package ua.hudyma.dto;
 
-public record CarReqDto() {
-}
+public record CarReqDto(
+        String ownerCode) {}

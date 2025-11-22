@@ -2,12 +2,12 @@ package ua.hudyma.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
 import ua.hudyma.enums.ChannelType;
 import ua.hudyma.util.IdGenerator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -29,6 +29,8 @@ public class Fine {
     private Camera camera;
     @Enumerated(EnumType.STRING)
     private ChannelType channelType;
-    private String postanovaNumber;
+    @CreationTimestamp
+    private LocalDateTime registeredOn;
+    private String postanovaNumber = IdGenerator.generateId(2, 8);
 
 }

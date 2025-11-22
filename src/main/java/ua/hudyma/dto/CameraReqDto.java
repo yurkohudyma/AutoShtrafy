@@ -1,4 +1,12 @@
 package ua.hudyma.dto;
 
-public record CameraReqDto() {
+import ua.hudyma.enums.ChannelType;
+
+import java.util.Set;
+
+public record CameraReqDto(
+        Location location,
+        String address,
+        Set<ChannelType> channelTypeSet
+) {
 }

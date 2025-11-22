@@ -26,5 +26,7 @@ public class Driver {
     @OneToMany(mappedBy = "driver")
     @ToString.Exclude
     private List<Fine> fineList = new ArrayList<>();
+    @OneToOne(mappedBy = "owner")
+    private Car car;
 
 }

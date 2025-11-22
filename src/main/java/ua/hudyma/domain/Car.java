@@ -18,13 +18,15 @@ public class Car {
     private Long id;
     @NaturalId
     private String licensePlate = IdGenerator.generateLicensePlate();
-
     @ManyToMany
     @ToString.Exclude
     @JoinTable(name = "drivers_using_cars",
             joinColumns = @JoinColumn(name = "car_id"),
             inverseJoinColumns = @JoinColumn(name = "driver_id"))
     private List<Driver> driverList = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "owner_id")
+    private Driver owner;
 
     @OneToMany(mappedBy = "car")
     @ToString.Exclude

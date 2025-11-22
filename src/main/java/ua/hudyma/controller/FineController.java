@@ -1,8 +1,10 @@
 package ua.hudyma.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import ua.hudyma.dto.FineReqDto;
+import ua.hudyma.dto.FineRespDto;
 import ua.hudyma.service.FineService;
 
 @RestController
@@ -10,4 +12,13 @@ import ua.hudyma.service.FineService;
 @RequiredArgsConstructor
 public class FineController {
     private final FineService fineService;
+
+    @PostMapping
+    public ResponseEntity<String> createFine (@RequestBody FineReqDto dto){
+        return ResponseEntity.ok(fineService.createFine(dto));
+    }
+    @GetMapping
+    public ResponseEntity<FineRespDto> fetchFine (@RequestParam String fineCode){
+        return ResponseEntity.ok(fineService.fetchFine(fineCode));
+    }
 }
